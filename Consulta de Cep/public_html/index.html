@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Consulta de CEP</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Bootstrap-->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+        <!--AngularJS-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+            <!-- app-->
+            <script src="js/cep.js"></script>
+            </head>
+    <body ng-app="cepApp" ng-controller="cepController">
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Fatec Itu - Consulta CEP</h1>
+                <p>Consulte o CEP de qualquer cidade do Brasil</p>
+                <p>Tecnologia: AmgularJS e API via Cep</p>
+                   
+            </div>
+            <h3 class="text-success">Desenvolvido por...</h3>
+            <form name="form-cep">
+                <div class="form-group">
+                    <label>CEP:</label>
+                    <input type="text" class="form-control" 
+                           ng-model="cep" ng-blur="buscacep(cep)"
+                           placeholder ="Ex: 13309340" pattern="[0-9]{8}" maxlength="8"/>
+                </div> 
+                
+                <a href="" ng-click="buscacep(cep)" ng-disabled="!cep" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search"></span>
+                    Procurar CEP
+                </a>
+            </form>
+            
+            <div id="aguarde" ng-show="mostraaguarde">
+                <img src = "imagens/carregando.gif" alt="Carregando"
+                class="text-success">
+                    Aguarde,enquato os dados são carregados
+                
+                
+            </div>
+            <form class="form-horizontal" ng-show="dados">
+<fieldset>
+
+<!-- Form Name -->
+<legend>Cadrastro de Clientes</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Logradouro</label>  
+  <div class="col-md-6">
+  <input id="textinput" name="textinput" type="text" 
+         ng-model="cliente.logradouro"
+         placeholder="Ex: Av. Tiradentes" class="form-control input-md" required="">
+  <span class="help-block">Informe o logradouro</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Complemento</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" 
+         ng-model="cliente.complemento"
+         placeholder="Complemento do Logradouro" class="form-control input-md">
+  <span class="help-block">Informe, se necessário, o complemento do logradouro</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Número</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" 
+         ng-model="cliente.numero"
+         placeholder="Número do loradouro" class="form-control input-md" required="">
+  <span class="help-block">Informe o número do logradouro</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Bairro</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" 
+         ng-model="cliente.bairro"
+         placeholder="Bairro" class="form-control input-md" required="">
+  <span class="help-block">Informe o Bairro</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Município/Localidade</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" 
+         ng-model="cliente.localidade"
+         placeholder="Município/Localidade" class="form-control input-md" required="">
+  <span class="help-block">Informe o Município/Localidade</span>  
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">Estado / UF</label>  
+  <div class="col-md-4">
+  <input id="textinput" name="textinput" type="text" 
+         ng-model="cliente.uf"
+         placeholder="Estado" class="form-control input-md" required="">
+  <span class="help-block">Informe a UF/Estado</span>  
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Salvar</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+        </div>
+    </body>
+</html>
